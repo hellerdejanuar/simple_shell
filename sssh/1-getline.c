@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <unistd.h>
+#include "main.h"
 
 int main (void)
 {
@@ -13,6 +12,8 @@ int main (void)
 	{
 	printf("$ ");
 	gl_r = getline(&buf, &num, str);
+	if (gl_r == -1 || _strcmp(buf,"end-of-file") || _strcmp(buf, "EOF"))
+		break;
 	printf("%s", buf);
 	}
 	return (1);
