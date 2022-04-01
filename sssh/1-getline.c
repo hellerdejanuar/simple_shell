@@ -3,11 +3,13 @@
 
 int main (void)
 {
-	size_t *num = NULL;
-	char *buf[1024];
-	char *stream = "ThisIsATest";
-	*null = 1024;
-	getline(buf, num, stream);
-	printf("%s\n", *buf);
+	size_t num = 1024;
+	char *buf = NULL;
+	FILE *str;
+
+	str = fopen("asdf", "r");
+
+	getline(&buf, &num, str);
+	printf("%s\n", buf);
 	return (1);
 }
