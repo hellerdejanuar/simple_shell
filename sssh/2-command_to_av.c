@@ -1,6 +1,6 @@
 #include "main.h"
 
-int main (void)
+int main(void)
 {
 	char **index = NULL;
 	int i;
@@ -12,7 +12,7 @@ int main (void)
 
 	return (0);
 }
-char ** _getline_tok (void)
+char **_getline_tok(void)
 {
 	size_t num = 1024;
 	char *buf = NULL;

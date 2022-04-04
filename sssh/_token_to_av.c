@@ -1,6 +1,6 @@
 #include "main.h"
 
-char ** _token_to_av (char *str, char* separator)
+char **_token_to_av(char *str, char* separator)
 {
 	char **index = NULL;
 	char *token = NULL;
