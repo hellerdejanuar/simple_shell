@@ -1,10 +1,15 @@
 #include "main.h"
 
+/**
+ * returns a list of all the arguments tokenized 
+ * (with the last newline removed)
+ */
 char **_token_to_av(char *str, char* separator)
 {
 	char **index = NULL;
 	char *token = NULL;
-	int i;
+	int i, tok_cn, n;
+
 	/* counts the amount of tokens to be indexed*/
 	tok_cn = _tokcntr(str, separator);
 
@@ -21,6 +26,11 @@ char **_token_to_av(char *str, char* separator)
 	}
 
 	index[i] = NULL;
+
+	for (n = 0; index[i - 1][n] != '\n'; n++)
+	{}
+
+	index[i - 1][n] = '\0';
 
 	return (index);
 }
