@@ -12,11 +12,14 @@ int main(void)
 
 	for (i = 0; i < PROCESS_QTY; i++)
 	{
+
+		printf("BEFORE fork()getpid %i\n", getpid());
+		printf("BEFORE fork()getppid %i\n", getppid());
 		pids[i] = fork();
+		printf("AFTER fork()getpid %i\n", getpid());
+		printf("AFTER fork()getppid %i\n", getppid());
 		if (pids[i] == -1)
     		printf("Error with creating process\n");
-
-		printf("pid: %i\n", getpid());
 
 		if (pids[i] != 0)
 		{
