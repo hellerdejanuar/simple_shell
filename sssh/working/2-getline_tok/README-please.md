@@ -1,2 +1,2 @@
 Getline Working with tokenizer 
-program exits after receiving input
+program exits with ctrl C, "EOF" and "end-of-file"

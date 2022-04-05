@@ -1,5 +1,10 @@
 #include "main.h"
 
+/**
+ * _getline_tok - prints "$ " and waits for input. then tokenizes the line
+ * into individual arguments
+ * Return: NULL if error or break
+ */
 char **_getline_tok(void)
 {
 	size_t num = 1024;
