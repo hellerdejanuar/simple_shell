@@ -18,6 +18,7 @@ char **_getline_tok(void)
 	{
 		printf("$ ");
 		gl_r = getline(&buf, &num, str);
+		/* This exceptions could be handled better with the return EOF of getline */
 		if (gl_r == -1 || _strcmp("end-of-file\n", buf) || _strcmp("EOF\n", buf))
 			break;
 

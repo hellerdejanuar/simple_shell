@@ -3,11 +3,6 @@
 #include <sys/wait.h>
 #define PROCESS_QTY 5
 
-/**
- * main - forks parent into 5 children, each
- * run the ls program in execve and waits between each run
- * Ends up waiting for input ????
- */
 int main(void)
 {
 	int i = 0;
