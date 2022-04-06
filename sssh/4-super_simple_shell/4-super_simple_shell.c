@@ -7,10 +7,11 @@
 int main(void)
 {
 	char **index = NULL;
-	char *argv[] = NULL;
-	char *env[] = NULL;
+	char *argv[] = {NULL};
+	char *env[] = {NULL};
 	char *pathname;
 	unsigned int arg_cn = 0;
+	int i = 0;
 
 	while (1)
 	{
@@ -19,13 +20,14 @@ int main(void)
 		/*if _getline_tok return NULL if fails or EOF*/
 		if (index == NULL)
 			break;
-		pathname = malloc(sizeof(char) * (_strlen(index[0]) + _strlen("/bin/")));
+
+		pathname = malloc(sizeof(char) * ( _strlen(index[0] + _strlen(_PATH))));
 		pathname = _strconcat(_PATH, index[0]);
 
 		arg_cn = _list_cntr(index);
 		/* Allocates argv */
 
-		argv = malloc(arg_cn * sizeof(char *));
+		*argv = malloc(arg_cn * sizeof(char *));
 
 		/*Loop through index[] to set argv[]*/
 		for (i = 0; index[i] != NULL; i++)
@@ -41,6 +43,5 @@ int main(void)
 		free(index);
 		free(pathname);
 	}
-
 	return (0);
 }
