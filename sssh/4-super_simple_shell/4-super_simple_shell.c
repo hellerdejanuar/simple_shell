@@ -7,7 +7,8 @@
 int main(void)
 {
 	char **index = NULL;
-	int i;
+	char *argv[] ={"ls", "-l", "./", NULL}; 
+	char *env[] = {"/bin/ls", NULL}; /* PATH ? */
 
 	while (1)
 	{
@@ -17,6 +18,7 @@ int main(void)
 		if (index == NULL)
 			break;
 
+		execve("/bin/ls", argv, env);
 		/* for (i = 0; index[i] != NULL; i++)
 			printf("%s\n", index[i]); */
 
