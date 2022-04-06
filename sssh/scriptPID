@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-ps -ef --forest | grep -i bash
