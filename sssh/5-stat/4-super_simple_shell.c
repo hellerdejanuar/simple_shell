@@ -38,9 +38,9 @@ int processid;
 		}
 		argv[i] = index[i];
 		i = 0;
+
 		/*If command not found, prints NOT FOUND*/
-		/*concatenate string to serch in _PATHargv[i]*/
-		if (stat(_strconcat(_PATH,argv[0]), &st) == -1)
+		if (stat(pathname, &st) == -1)
 			printf("%s: NOT FOUND\n", argv[i]);
 		{
 			processid = fork();
@@ -53,6 +53,7 @@ int processid;
 			}
 			wait(NULL);
 		}
+
 		free(index);
 		free(pathname);
 	}
