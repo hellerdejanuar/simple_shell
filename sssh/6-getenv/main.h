@@ -17,4 +17,5 @@ unsigned int _list_cntr(char **list);
 int _strlen(char *s);
 int _strcomp(const char *, const char *);
 char *_getenv(const char *);
+int *_strncmp(const char *str1, const char * str2, int n);
 #endif
