@@ -8,48 +8,49 @@
 char *_getenv(const char *var)
 {
 	extern char **environ;
-	char *aux = NULL;
-	unsigned int var_len = 0, old_var_len = 0, i, j;
+	unsigned int var_len = 0, i, j;
 	char *value = NULL;
 
+	/* iterate trough elements of list*/
 	for (i = 0; environ[i] != NULL; i++)
 	{
 		/* counts env var length */
 		for (var_len = 0; environ[i][var_len] != '='; var_len++);
 
-		/* if not enough space in aux to store the var name allocate it*/
-		if (var_len > old_var_len)
-		{
-			free(aux);
-			aux = malloc(sizeof(char) * (var_len + 1));
-		}
+		printf("%s\n", environ[i]);
+		printf("%c\n", environ[i][var_len]);
 
-		/* stores env var name in string to compare*/
-		for (j = 0; j < var_len; j++)
-		{
-			aux[j] = environ[i][j];
-		}
-		aux[j] = '\0';
+		/* compares var to first 'var_len' chars of environ */
+		if (strncmp(environ[i], var, var_len) != 0)
+			continue;
 
-		/* if var == aux, store the corresponding value and return*/
-		if (_strcomp(var, aux) == 0)
+		printf("match!!\n");
+		/* if environ variable ends right after the var_len allocate the rest
+		 * in value and return */
+		if (environ[i][var_len] == '=')
 		{
-			free(aux);
+			printf("enter ifman\n");
 
 			for (j = var_len + 1; environ[i][j] != '\0'; j++);
 
 			value = malloc(sizeof(char) * (j - var_len));
+				if (value == NULL)
+				{
+					printf("malloc ERROR\n");
+					return (NULL);
+				}
 
 			for (j = var_len + 1; environ[i][j] != '\0'; j++)
 			{
-				value[j] = environ[i][j];
+				value[j - var_len - 1] = environ[i][j];
 			}
-			value[j] = '\0';
 
+			value[j - var_len - 1] = '\0';
+
+			printf("THIS: %s\n", value);
 			return(value);
 		}
 	}
 
-	free(aux);
 	return (NULL);
 }
