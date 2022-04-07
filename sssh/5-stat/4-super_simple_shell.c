@@ -45,9 +45,12 @@ int processid;
 		{
 			processid = fork();
 			if( processid == 0)
+			{
 			execve(pathname, argv, env);
 			/* for (i = 0; index[i] != NULL; i++)
 				printf("%s\n", index[i]); */
+			exit(0);
+			}
 			wait(NULL);
 		}
 		free(index);
