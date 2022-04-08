@@ -13,13 +13,10 @@ int main(void)
 	struct stat st;
 	int processid;
 	char **path = NULL;
+	int er_flag = 0;
 
 	path = _token_to_av(_getenv("PATH"), ":");
 
-	for (j = 0; path[j]; j++)
-	{
-		printf("test: %s\n", path[j]);
-	}
 	if (path == NULL)
 		printf("PATH not found\n");
 
@@ -30,44 +27,39 @@ int main(void)
 		/*if _getline_tok return NULL if fails or EOF*/
 		if (index == NULL)
 			break;
+		
+		er_flag = 0;
 
 		for (j = 0; path[j] != NULL; j++)
 		{
-/*
-			printf("Actual PATH: %s\n", path[j]);
-
-			printf("INDEX 0 before: %s\n", index[0]);*/
-
 			pathname = malloc(sizeof(char) * (_strlen(index[0]) + _strlen(path[j]) + 1));
 			pathname = _strconcat(path[j], "/");
 			pathname = _strconcat(pathname, index[0]);
 			
-			/*if (pathname == NULL)
-				printf("PANIK! ");
-			printf("PATHNAME: %s\n", pathname);*/
-
-			/*If command not found, prints NOT FOUND*/
+			/*If command not found, pr*/
 			if (stat(pathname, &st) == -1)
-				{
-					printf("%s: NOT FOUND\n", index[0]);
-					/*printf("INDEX 0  after: %s\n", index[0]);*/
-				}
+			{
+				er_flag = 0;
+			}
 			else
 			{
-				/*printf("%s: FOUND!!\n", index[0]);*/
 				processid = fork();
+				/*Children process strats*/
 				if( processid == 0)
 				{
 					execve(pathname, index, env);
-					/* for (i = 0; index[i] != NULL; i++)
-						printf("%s\n", index[i]); */
+					/*Kill children when execve fails*/
 					exit(0);
 				}
 				wait(NULL);
-				/*printf("INDEX 0  after: %s\n", index[0]);*/
+				er_flag = 1;
 				break;
 			}
 		}
+		/*Outside for-loop, if command not found on any PATH*/
+		if (er_flag == 0)	
+			printf("%s: Command not found.\n", index[0]);
+
 		free(pathname);
 	}
 	return (0);
