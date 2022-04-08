@@ -33,28 +33,28 @@ int main(void)
 
 		for (j = 0; path[j] != NULL; j++)
 		{
-/*
+
 			printf("Actual PATH: %s\n", path[j]);
 
-			printf("INDEX 0 before: %s\n", index[0]);*/
+			printf("INDEX 0 before: %s\n", index[0]);
 
 			pathname = malloc(sizeof(char) * (_strlen(index[0]) + _strlen(path[j]) + 1));
 			pathname = _strconcat(path[j], "/");
 			pathname = _strconcat(pathname, index[0]);
 			
 			if (pathname == NULL)
-			/*	printf("PANIK! ");
-			printf("PATHNAME: %s\n", pathname);*/
+				printf("PANIK! ");
+			printf("PATHNAME: %s\n", pathname);
 
 			/*If command not found, prints NOT FOUND*/
 			if (stat(pathname, &st) == -1)
 				{
 					printf("%s: NOT FOUND\n", index[0]);
-					/*printf("INDEX 0  after: %s\n", index[0]);*/
+					printf("INDEX 0  after: %s\n", index[0]);
 				}
 			else
 			{
-				/*printf("%s: FOUND!!\n", index[0]);*/
+				printf("%s: FOUND!!\n", index[0]);
 				processid = fork();
 				if( processid == 0)
 				{
@@ -64,7 +64,7 @@ int main(void)
 					exit(0);
 				}
 				wait(NULL);
-				/*printf("INDEX 0  after: %s\n", index[0]);*/
+				printf("INDEX 0  after: %s\n", index[0]);
 				break;
 			}
 		}
