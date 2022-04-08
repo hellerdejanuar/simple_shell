@@ -18,7 +18,7 @@ int _strcomp(const char *str1, const char *str2, int n)
 	{	
 		/*Checkes wheather same char position are same character in both strings*/
 		/*Checkes if n is greater than quantity of chars in both strings.*/
-		if (str1[i] != str2[i] || str1[i] == '\0' || str2[i] == '\0')
+		if (str1[i] != str2[i] || str[i] == '\0' || str[i] == '\0')
 			return (-1);
 	}
 	return (0);

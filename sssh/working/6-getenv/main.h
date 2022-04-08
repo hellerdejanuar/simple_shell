@@ -15,5 +15,7 @@ char **_getline_tok(void);
 char *_strconcat(char *s1, char *s2);
 unsigned int _list_cntr(char **list);
 int _strlen(char *s);
+int _strcomp(const char *, const char *);
 char *_getenv(const char *);
+int *_strncmp(const char *str1, const char * str2, int n);
 #endif
