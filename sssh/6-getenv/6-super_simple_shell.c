@@ -42,8 +42,8 @@ int main(void)
 			pathname = _strconcat(path[j], "/");
 			pathname = _strconcat(pathname, index[0]);
 			
-			if (pathname == NULL)
-			/*	printf("PANIK! ");
+			/*if (pathname == NULL)
+				printf("PANIK! ");
 			printf("PATHNAME: %s\n", pathname);*/
 
 			/*If command not found, prints NOT FOUND*/
