@@ -7,32 +7,21 @@
 int main(void)
 {
 	char **index = NULL;
-	char *argv[] = {NULL};
-	char *env[] = {NULL};
+	char **env = NULL;
 	char *pathname;
-	unsigned int arg_cn = 0;
 	int i = 0, j = 0;
 	struct stat st;
 	int processid;
 	char **path = NULL;
-	char *path_str;
 
-	path_str = malloc(1024);
-	path_str = _getenv("PATH");
-	printf("%s\n", path_str);
+	path = _token_to_av(_getenv("PATH"), ":");
 
-	path = _token_to_av(path_str, ":");	
+	for (j = 0; path[j]; j++)
+	{
+		printf("%s", path[j]);
+	}	
 	if (path == NULL)
-		printf("SHIIT\n");
-	
-	else
-	{	
-		printf("Kalm\n");
-		for (j = 0; path[j] != NULL; j++)
-			printf("%s\n", path[j]);
-	}
-
-	return(0);
+		printf("PATH not found\n");
 
 	while (1)
 	{
@@ -42,37 +31,33 @@ int main(void)
 		if (index == NULL)
 			break;
 
-		pathname = malloc(sizeof(char) * ( _strlen(index[0] + _strlen(_PATH))));
-		pathname = _strconcat(_PATH, index[0]);
-
-		arg_cn = _list_cntr(index);
-		/* Allocates argv */
-
-		*argv = malloc(arg_cn * sizeof(char *));
-
-		/*Loop through index[] to set argv[]*/
-		for (i = 0; index[i] != NULL; i++)
+		for (j = 0; path[j] != NULL; j++)
 		{
-		argv[i] = index[i];
-		}
-		argv[i] = index[i];
-		i = 0;
+			free(pathname);
+			printf("Actual PATH: %s\n", path[j]);
 
-		/*If command not found, prints NOT FOUND*/
-		if (stat(pathname, &st) == -1)
-			printf("%s: NOT FOUND\n", argv[i]);
-		{
-			processid = fork();
-			if( processid == 0)
+			pathname = malloc(sizeof(char) * ( _strlen(index[0] + _strlen(path[j]))));
+			pathname = _strconcat(path[j], index[0]);
+
+			printf("%s\n", pathname);
+
+			/*If command not found, prints NOT FOUND*/
+			if (stat(pathname, &st) == -1)
+				printf("%s: NOT FOUND\n", index[i]);
+			else
 			{
-			execve(pathname, argv, env);
-			/* for (i = 0; index[i] != NULL; i++)
-				printf("%s\n", index[i]); */
-			exit(0);
+				processid = fork();
+				if( processid == 0)
+				{
+					execve(pathname, index, env);
+					/* for (i = 0; index[i] != NULL; i++)
+						printf("%s\n", index[i]); */
+					exit(0);
+				}
+				wait(NULL);
+				break;
 			}
-			wait(NULL);
 		}
-
 		free(index);
 		free(pathname);
 	}

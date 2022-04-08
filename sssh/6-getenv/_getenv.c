@@ -17,26 +17,20 @@ char *_getenv(const char *var)
 		/* counts env var length */
 		for (var_len = 0; environ[i][var_len] != '='; var_len++);
 
-		printf("%s\n", environ[i]);
-		printf("%c\n", environ[i][var_len]);
-
 		/* compares var to first 'var_len' chars of environ */
 		if (strncmp(environ[i], var, var_len) != 0)
 			continue;
 
-		printf("match!!\n");
 		/* if environ variable ends right after the var_len allocate the rest
 		 * in value and return */
 		if (environ[i][var_len] == '=')
 		{
-			printf("enter ifman\n");
 
 			for (j = var_len + 1; environ[i][j] != '\0'; j++);
 
 			value = malloc(sizeof(char) * (j - var_len));
 				if (value == NULL)
 				{
-					printf("malloc ERROR\n");
 					return (NULL);
 				}
 
