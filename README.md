@@ -1,14 +1,20 @@
 MAN PAGE.
 
-Not interactive mode
+<h3>Not interactive mode</h3>
 It executes the shell, first argument after itself will be taken as first argument by simple shell, ending the process afterwards.
 
 Example: ./simple_shell pwd
 it will display current working directory in stdout and terminate the program afterwards.
 
-Interactive mode</h3>
+<h3>Interactive mode</h3>
 
 Interactive mode will set a loop reading from stdin, the shell can be used with several arguments, several times, untill exiting signal is entered.
+
+example:
+./simple_shell
+$ pwd/n
+simple_shell/
+$
 
 
 <h3>Arguments</h3>
