@@ -8,8 +8,11 @@
 char *_getenv(const char *var)
 {
 	extern char **environ;
-	unsigned int var_len = 0, i, j;
+	unsigned int var_len = 0, i = 0, j = 0;
 	char *value = NULL;
+
+	if (var == NULL || environ == NULL)
+		return (NULL);
 
 	/* iterate trough elements of list*/
 	for (i = 0; environ[i] != NULL; i++)

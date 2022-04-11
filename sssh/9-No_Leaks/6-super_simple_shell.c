@@ -30,12 +30,16 @@ int main(void)
 		{
 			break;
 		}
+<<<<<<< HEAD
 		if (index[0][0] == '\n')
 		{
 			free(index[0]);
 			free(index);
 			continue;
 		}
+=======
+
+>>>>>>> 01c10f57e2d2427cadbc2408541626fb836c00cf
 		er_flag = 0;
 
 		for (j = 0; path[j] != NULL; j++)
