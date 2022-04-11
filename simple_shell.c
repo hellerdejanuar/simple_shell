@@ -18,7 +18,7 @@ int main(void)
 	path = _token_to_av(_getenv("PATH"), ":");
 
 	if (path == NULL)
-		printf("PATH not found\n");
+		write(STDOUT_FILENO, "PATH not found\n", 1024);
 
 	while (1)
 	{
@@ -57,9 +57,11 @@ int main(void)
 			}
 		}
 		/*Outside for-loop, if command not found on any PATH*/
-		if (er_flag == 0)	
-			printf("%s: Command not found.\n", index[0]);
-
+		if (er_flag == 0)
+		{	
+			write(STDOUT_FILENO, index[0], 1024);
+			write(STDOUT_FILENO, ": Command not found\n", 1024);
+		}
 		free(pathname);
 	}
 	return (0);
