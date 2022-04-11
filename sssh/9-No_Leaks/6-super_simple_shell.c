@@ -1,5 +1,4 @@
 #include "main.h"
-#define _PATH "/bin/"
 /**
  * main - runs getline_tok to read a line and tokenize the string into a list
  * Return: 0 success
@@ -23,12 +22,14 @@ int main(void)
 
 	while (1)
 	{
+
 		/* getline function. returns index of arguments*/
 		index = _getline_tok();
 		/*if _getline_tok return NULL if fails or EOF*/
 		if (index == NULL)
+		{
 			break;
-		
+		}
 		er_flag = 0;
 
 		for (j = 0; path[j] != NULL; j++)
@@ -63,8 +64,9 @@ int main(void)
 			printf("%s: Command not found.\n", index[0]);
 
 		free(pathname);
+		free(index[0]);
+		free(index);
 	}
-	
 	free(aux_path);
 	free(path);
 	return (0);

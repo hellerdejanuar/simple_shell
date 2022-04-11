@@ -26,6 +26,6 @@ char **_getline_tok(void)
 
 		return (index);
 	}
-
+	free(buf);
 	return (NULL);
 }
