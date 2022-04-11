@@ -18,5 +18,5 @@ char *_strconcat(char *s1, char *s2);
 unsigned int _list_cntr(char **list);
 int _strlen(char *s);
 char *_getenv(const char *);
-
+int _run_from_PATH(char **, char**);
 #endif

@@ -8,7 +8,7 @@
 int _tokcntr(char *str, char *separator)
 {
 	int i;
-	int a = 1;
+	int cn = 1;
 
 	if (separator[1] != '\0')
 		return (-1);
@@ -16,9 +16,9 @@ int _tokcntr(char *str, char *separator)
 	for (i = 0; str[i] != '\0'; i++)
 	{
 		if (str[i] == separator[0])
-			a++;
+			cn++;
 	}
 
 	/* only works with a one character long separator */
-	return (a);
+	return (cn);
 }
