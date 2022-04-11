@@ -23,7 +23,9 @@ char **_getline_tok(void)
 			break;
 		if (buf[0] == '\n')
 		{
-			index[0] = "\n";
+			index = malloc(sizeof(char *) * 2);	
+			index[0] = buf;
+			index[1] = NULL;
 			return (index);
 		}
 		index = _token_to_av(buf, " ");
