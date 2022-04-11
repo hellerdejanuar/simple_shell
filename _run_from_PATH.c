@@ -6,7 +6,7 @@
  */
 int _run_from_PATH(char **path, char** index)
 {
-	j = 0;
+	int j = 0;
 	char *pathname = NULL;
 	char *aux_pathname = NULL;
 	struct stat st;
