@@ -36,24 +36,24 @@ int main(void)
 			break;
 		}
 
-		_run_from_PATH(path, index);
-/*		for (j = 0; path[j] != NULL; j++)
+		for (j = 0; path[j] != NULL; j++)
 		{
 			exit_flag = 1;
+			/*pathname = malloc(sizeof(char) * (_strlen(index[0]) + _strlen(path[j]) + 1)); jeeejooooo */
 			aux_pathname = _strconcat(path[j], "/");
 			pathname = _strconcat(aux_pathname, index[0]);
 			free(aux_pathname);
-*/
+
 			/*If command not found, set flag to print error*/
-/*			if (stat(pathname, &st) != -1)
+			if (stat(pathname, &st) != -1)
 			{
 				processid = fork();
-	*/			/*Children process strats*/
-/*				if( processid == 0)
+				/*Children process strats*/
+				if( processid == 0)
 				{
 					execve(pathname, index, NULL);
-*/					/*Kill children when execve fails*/
-/*					exit(0);
+					/*Kill children when execve fails*/
+					exit(0);
 				}
 				wait(NULL);
 				er_flag = 1;
@@ -64,8 +64,7 @@ int main(void)
 			{
 				free(pathname);
 			}
-		}*/
-
+		}
 		/*Outside for-loop, if command not found on any PATH*/
 		if (er_flag == 0)	
 			printf("%s: Command not found.\n", index[0]);
