@@ -43,6 +43,7 @@ int main(void)
 			if (stat(pathname, &st) == -1)
 			{
 				er_flag = 0;
+				free(pathname);
 			}
 			else
 			{
@@ -61,9 +62,12 @@ int main(void)
 		}
 		/*Outside for-loop, if command not found on any PATH*/
 		if (er_flag == 0)	
+		{
 			printf("%s: Command not found.\n", index[0]);
+		}
+		else	
+			free(pathname);
 
-		free(pathname);
 		free(index[0]);
 		free(index);
 	}

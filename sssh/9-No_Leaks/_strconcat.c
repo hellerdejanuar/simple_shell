@@ -31,6 +31,9 @@ char *_strconcat(char *s1, char *s2)
 	/*Allocates final string before merging*/
 	s3 = malloc(sizeof(char) * (a + b + 1));
 
+	if(s3 == NULL)
+		return (NULL);
+
 	/*Iterates trough s3 to set every value of the final string*/
 	for (i = 0; i < a; i++)
 	{
