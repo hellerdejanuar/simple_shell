@@ -1,1 +1,29 @@
-this is a man for simple shell
+]SIMPLE_SHELL MANUAL PAGE.
+
+DESCRIPTION 
+Simple_shell is a command language interpreter that executes commands read from the stdin or from a file.
+
+NOT INTERACTIVE MODE
+Any argument sent trough trough a pipeline to simple_shell will be taken as first argument by simple shell, procesing it and ending the process afterwards.
+
+Example:
+pwd | simple_shell
+[Will process "pwd" argument, if found as valid command executes it and finishes preocess afterwards]
+
+INTERACTIVE MODE
+Interactive mode will set a loop reading from stdin, the shell can be used with several arguments, several times, untill exiting signal is entered.
+
+example: ./simple_shell
+$ pwd\n 
+[Will display current working directory]
+$ 
+[Prompt waiting for next interaction]
+
+ARGUMENTS
+Simple_shell takes arguments separated by spaces from the command line. It works by tokenizing the input from stdin. Input from stdin is a string ending in '\n' before terminating byte '\0'.
+The tokens are stored into a list, first string in the list will be searched in existing PATH directories (see env for PATH directories) if found it will recognize it as a command and execute the program. Following arguments will be taken as flags for the requested program.
+
+If no match is found for any valid PATH, it will not recognize it as a command and will prompt ":command not found" message.
+
+Exit the shell
+Te exit the shell it needs to receive one of the following arguments: EOF end-of-file (Ctrl + d) exit Internally it sends a return value of (-1) wich terminates the line receiving loop thus terminating the process.
