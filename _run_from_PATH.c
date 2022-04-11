@@ -14,6 +14,13 @@ int _run_from_PATH(char **path, char** index)
 	int er_flag = 0;
 	int exit_flag = 0;
 
+	if (index == NULL)
+	{
+		if (exit_flag == 0)
+			free(pathname);
+		break;
+	}
+
 	for (j = 0; path[j] != NULL; j++)
 	{
 		exit_flag = 1;

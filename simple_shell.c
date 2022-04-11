@@ -7,11 +7,6 @@
 int main(void)
 {
 	char **index = NULL;
-	char *pathname = NULL, *aux_pathname = NULL;
-	int j = 0;
-	struct stat st;
-	int processid;
-	char **path = NULL;
 	char *aux_path = NULL;
 	int er_flag = 0;
 	int exit_flag = 0;
