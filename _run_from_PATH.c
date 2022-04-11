@@ -6,6 +6,14 @@
  */
 int _run_from_PATH(char **path, char** index)
 {
+	j = 0;
+	char *pathname = NULL;
+	char *aux_pathname = NULL;
+	struct stat st;
+	int processid;
+	int er_flag = 0;
+	int exit_flag = 0;
+
 	for (j = 0; path[j] != NULL; j++)
 	{
 		exit_flag = 1;
