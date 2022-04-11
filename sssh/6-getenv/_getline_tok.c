@@ -2,7 +2,7 @@
 
 /**
  * _getline_tok - prints "$ " and waits for input. then tokenizes the line
- * into individual arguments
+ * into individual arguments, USES MALLOC.
  * Return: NULL if error or break
  */
 char **_getline_tok(void)
@@ -20,11 +20,13 @@ char **_getline_tok(void)
 		gl_r = getline(&buf, &num, str);
 		/* This exceptions could be handled better with the return EOF of getline */
 		if (gl_r == -1 || _strcmp("end-of-file\n", buf) || _strcmp("EOF\n", buf))
+		{
+			free(buf);
 			break;
-
+		}
 		index = _token_to_av(buf, " ");
-
-		return (index);
+			free(buf);	
+			return (index);
 	}
 
 	return (NULL);
