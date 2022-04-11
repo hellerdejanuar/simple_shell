@@ -1,4 +1,4 @@
-]SIMPLE_SHELL MANUAL PAGE.
+SIMPLE_SHELL MANUAL PAGE.
 
 DESCRIPTION 
 Simple_shell is a command language interpreter that executes commands read from the stdin or from a file.
@@ -20,10 +20,37 @@ $
 [Prompt waiting for next interaction]
 
 ARGUMENTS
-Simple_shell takes arguments separated by spaces from the command line. It works by tokenizing the input from stdin. Input from stdin is a string ending in '\n' before terminating byte '\0'.
-The tokens are stored into a list, first string in the list will be searched in existing PATH directories (see env for PATH directories) if found it will recognize it as a command and execute the program. Following arguments will be taken as flags for the requested program.
+Simple_shell takes arguments separated by spaces from the command line. It works by tokenizing the input from stdin. Input from stdin is a string which it´s second to last character is '\n' before the terminating byte '\0'.
+The tokens are stored into a list, first string in the list will be searched in existing PATH directories (see env for PATH directories) if found it will recognize it as a command and execute the program.
+Following arguments will be taken as flags for the requested program.
 
 If no match is found for any valid PATH, it will not recognize it as a command and will prompt ":command not found" message.
 
-Exit the shell
-Te exit the shell it needs to receive one of the following arguments: EOF end-of-file (Ctrl + d) exit Internally it sends a return value of (-1) wich terminates the line receiving loop thus terminating the process.
+EXIT THE SHELL
+Te exit the shell it needs to receive one of the following arguments:
+EOF
+end-of-file
+(Ctrl + d)
+exit
+
+Internally it sends a return value of (-1) wich terminates the line receiving loop thus terminating the process.
+
+BUGS
+BUGS
+       It's too big and too slow.
+
+       There are some subtle differences between bash and traditional versions of sh, mostly because of the POSIX specification.
+
+       Aliases are confusing in some uses.
+
+       Shell builtin commands and functions are not stoppable/restartable.
+
+       Compound commands and command sequences of the form `a ; b ; c' are not handled gracefully when process  suspension  is  at‐
+       tempted.   When a process is stopped, the shell immediately executes the next command in the sequence.  It suffices to place
+       the sequence of commands between parentheses to force it into a subshell, which may be stopped as a unit.
+
+       Array variables may not (yet) be exported.
+
+       There may be only one active coprocess at a time.
+
+                                                    2022 April                                                 SIMPLE_SHELL
