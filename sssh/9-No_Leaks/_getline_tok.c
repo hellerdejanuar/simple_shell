@@ -21,7 +21,11 @@ char **_getline_tok(void)
 		/* This exceptions could be handled better with the return EOF of getline */
 		if (gl_r == -1 || _strcmp("end-of-file\n", buf) || _strcmp("EOF\n", buf))
 			break;
-
+		if (buf[0] == '\n')
+		{
+			index[0] = "\n";
+			return (index);
+		}
 		index = _token_to_av(buf, " ");
 
 		return (index);
