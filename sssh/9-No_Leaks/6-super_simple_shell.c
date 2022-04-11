@@ -20,6 +20,13 @@ int main(void)
 	if (path == NULL)
 		printf("PATH not found\n");
 
+	if (index[0][0] == '\n')
+	{
+		free(index[0]);
+		free(index);
+		continue;
+	}
+
 	while (1)
 	{
 
