@@ -1,0 +1,2 @@
+#!/bin/bash
+gcc -Werror -Wall -Wextra -pedantic -std=gnu89 main.h *-super_simple_shell.c _tokcntr.c _strcmp.c _token_to_av.c _getline_tok.c _strlen.c _strconcat.c _list_cntr.c _getenv.c _strncmp.c
