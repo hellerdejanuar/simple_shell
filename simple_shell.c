@@ -44,13 +44,16 @@ int main(void)
 
 		for (j = 0; path[j] != NULL && lit_path_flg == 0; j++)
 		{
-			if (_strcomp(index[0], "env", 3) == 0)
+			if ((_strcomp(index[0], "env", 3) == 0) && (index[0][3] == '\0'))
 			{
 				for(i = 0; environ[i] != NULL; i++)
 				{
 					write(STDOUT_FILENO, environ[i], _strlen(environ[i]));
 					write(STDOUT_FILENO, "\n", 1);
 				}
+				lit_path_flg = 1;
+				er_flag = 1;
+				break;
 			}
 
 			if (index[0][0] != '/') /* to search through PATH */ 
