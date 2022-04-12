@@ -47,25 +47,32 @@ After using any of these methods, it will print exit and terminate.
     exit  closes the simple_shell
 
 ##### FILES
-     /_printf.c
+     /simple_shell.c
           Main file.
-     /fn_sel.c
-          Function pointer to identified module functions.
-     /fn_unk.c
-          Counter function for an unknown identifier.
-     /fn_print.c
-          Definition of functions for character, string and module.
-     /_print_i.c
-          Definition of function for integers and decimals.
-     /_print_ui.c
-          Definition of function for unsigned integers.
-     /_pwr.c
-          Function to raise x to the power of x.
-     /_putchar.c
-          Custom function of putchar() to print the chars of the string.
+     /_getline_tok.c
+          Function that tokenizes input from stdin. Returns an index.
+     /_getenv.c
+            Searches for a value in the local environment variables.
+     /_list_cntr.c
+            Counts elements of a list or index.
+     /_strcmp.c
+            Compares two strings, Returns 1 if success.
+     /_strconcat.c
+            Concatenates two strings, adds '\0' at end.
+     /_strlen.c
+            Function that returns the length of a string.
+     /_strncmp.c
+            Compares two strings character by character, from beggining @n times.
+     /_tokcntr.c
+            Counts tokens in a string parsed by *token.
+     /_token_to_av.c
+            Makes list from string by tokenizeing throug a separator.
+     /main.h
+            Header.
 
 ###### BUGS
-     Incomplete.
+Simple_shell does not support moving cursor with arrows.
 
 ###### AUTHOR
-     Florencia Mestre and German Izquierdo<https://github.com/FloLys/simple_shell>
+Agustin Labadie <labalabadie@gmail.com>
+Mauricio Heller <hellerdejanuar@gmail.com>
