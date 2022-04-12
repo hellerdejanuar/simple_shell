@@ -1,7 +1,7 @@
 ![Shell](https://pandorafms.com/blog/wp-content/uploads/2020/04/sistema-operativo-de-servidor-featured.jpg)
 # Simple_Shell
 **By Mauricio Heller and Agustín Labadie, for Holberton School**
-Holberton School, c17 - April 2022
+Holberton School, #C17 - April 2022
 
 # Introduction
 Simple_Shell is a simplified version of the **shell**, built by our team from the ground up. 
@@ -20,18 +20,19 @@ The current version of **simple_shell** does not feature filesystem navigation y
 
 # How to use it
 
-After running the program the user is presented with a prompt reading '$ ' and the interface waits for the user to input some commands.
+# Interactive mode.
+After running the program the user is presented with a prompt reading "$ " and the interface waits for the user to input some commands.
 The command is divided in tokens separated by spaces, each token serves a different purpose.
 The first token is for the name of the program, the options here are:
-      Writing the name of an installed program (ls), present in some of directories defined in the PATH environment variable.
-      Specifying the full path of an excutable located in any directory of the system, startign with a '/'
-      Typing one of the built in commands
+      >Writing the name of an installed program (ls), present in some of directories defined in the PATH environment variable.
+      >Specifying the full path of an excutable located in any directory of the system, startign with a '/'
+      >Typing one of the built in commands.
       
 Press enter to search for the program and try to run it.      
-If the name token doesnt meet any of condition cited above, it will print a "not found" error.
+If the name token doesnt meet any of condition mentioned above, it will print a ":Command not found" message.
 (when no text is typed it will print a new prompt with no message and wait for input, as if nothing happened)
 
-
+The program works mostly inside a loop, so it will be able to be used any wanted times.
 
 To exit the **simple_shell** you can terminate it with `Ctrl+C` like any other program.
 
@@ -39,7 +40,10 @@ Alternatively, the built-in exit methods are:
       Pressing `Ctrl+D`
       Typing `exit`, `EOF`, `end-of-file`
       
-After using any of these methods, it will print exit and terminate.      
+After using any of these methods, it will print exit and terminate.    
+
+# Non-interactive mode
+If its called with arguments instead of reading from the stdin, it will run uno instance of the loop, executing the command and closing simple_shell afterwards.
 
 ##### BUILT-INS
 
@@ -71,9 +75,19 @@ After using any of these methods, it will print exit and terminate.
      /main.h
             Header.
 
+
 ###### BUGS
 Simple_shell does not support moving cursor with arrows.
 
 ###### AUTHOR
 Agustin Labadie <labalabadie@gmail.com>
 Mauricio Heller <hellerdejanuar@gmail.com>
+
+Built in April 2022 for a Holberton school´s project.
+MVD, Uruguay.
+
+
+
+
+
+Image Source: https://pandorafms.com/blog/es/sistema-operativo-de-servidor/
