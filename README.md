@@ -1,3 +1,4 @@
+![Shell](https://pandorafms.com/blog/wp-content/uploads/2020/04/sistema-operativo-de-servidor-featured.jpg)
 # Simple_Shell
 **By Mauricio Heller and Agustín Labadie, for Holberton School**
 Holberton School, c17 - April 2022
