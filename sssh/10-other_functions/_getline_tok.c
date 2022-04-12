@@ -16,7 +16,9 @@ char **_getline_tok(void)
 	str = stdin;
 	for (;gl_r != -1;)
 	{
-		printf("$ ");
+		if (isatty(0))
+		write(STDOUT_FILENO, "$ ", 2);
+
 		gl_r = getline(&buf, &num, str);
 		/* This exceptions could be handled better with the return EOF of getline */
 		if (gl_r == -1 || _strcmp("end-of-file\n", buf) || _strcmp("EOF\n", buf))

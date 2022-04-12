@@ -44,7 +44,6 @@ char *_getenv(const char *var)
 
 			value[j - var_len - 1] = '\0';
 
-			printf("THIS: %s\n", value);
 			return(value);
 		}
 	}

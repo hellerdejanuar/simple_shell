@@ -14,7 +14,6 @@ char **_token_to_av(char *str, char* separator)
 	tok_cn = _tokcntr(str, separator);
 	if (tok_cn == -1)
 	{
-		printf("lala");
 		return (NULL);
 	}
 	
