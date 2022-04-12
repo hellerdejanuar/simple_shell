@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- *_strconcat - Uses Malloc() to concatenate two strings, adds '\0' at end.
+ *_strconcat - Concatenates two strings, adds '\0' at end.
  *@s1: First string.
  *@s2: Second string.
  *Return: s3, being a string ending in '\0'. NULL if error.
@@ -30,7 +30,8 @@ char *_strconcat(char *s1, char *s2)
 
 	/*Allocates final string before merging*/
 	s3 = malloc(sizeof(char) * (a + b + 1));
-	if (s3 == NULL)
+
+	if(s3 == NULL)
 		return (NULL);
 
 	/*Iterates trough s3 to set every value of the final string*/

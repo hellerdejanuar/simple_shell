@@ -16,19 +16,24 @@ char **_getline_tok(void)
 	str = stdin;
 	for (;gl_r != -1;)
 	{
+		if (isatty(0))
 		write(STDOUT_FILENO, "$ ", 2);
+
 		gl_r = getline(&buf, &num, str);
 		/* This exceptions could be handled better with the return EOF of getline */
 		if (gl_r == -1 || _strcmp("end-of-file\n", buf) || _strcmp("EOF\n", buf))
-		{
-			free(buf);
 			break;
+		if (buf[0] == '\n')
+		{
+			index = malloc(sizeof(char *) * 2);	
+			index[0] = buf;
+			index[1] = NULL;
+			return (index);
 		}
-
 		index = _token_to_av(buf, " ");
-		free(buf);
+
 		return (index);
 	}
-
+	free(buf);
 	return (NULL);
 }
