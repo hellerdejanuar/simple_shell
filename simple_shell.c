@@ -13,7 +13,7 @@ int main(void)
 	int processid;
 	char **path = NULL;
 	int lit_path_flg = 0;
-	int er_flag = 0;
+	int er_flag = 0, exit_flag = 0;
 	
 	aux_path = _getenv("PATH");
 	path = _token_to_av(aux_path, ":");
@@ -23,6 +23,8 @@ int main(void)
 
 	while (1)
 	{
+		if (exit_flag == 1)
+			break;
 
 		/* getline function. returns index of arguments*/
 		index = _getline_tok();
@@ -52,6 +54,12 @@ int main(void)
 					write(STDOUT_FILENO, "\n", 1);
 				}
 				lit_path_flg = 1;
+				er_flag = 1;
+				break;
+			}
+			if ((_strcomp(index[0], "exit", 4) == 0) && (index[0][4] == '\0'))
+			{
+				exit_flag = 1;
 				er_flag = 1;
 				break;
 			}
